@@ -1,6 +1,26 @@
-const express = require('express');
-const app = express();
+import express from "express";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+import planetRoutes from "./routes/planetRoutes.js";
 
-app.listen(3000, () => {
-  console.log('Server is running on port 3000');
+dotenv.config();
+
+const app = express();
+app.use("/api/planets", planetRoutes);
+app.use(express.json());
+const port = 6754;
+
+mongoose
+    .connect(process.env.MONGO_URI)
+    .then(() => console.log('MongoDB connected…'))
+    .catch(err => console.error('MongoDB connection error:', err));
+
+//test route
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
+
+
+app.listen(6754, () => {
+  console.log('Server is running on port 6754');
 });
