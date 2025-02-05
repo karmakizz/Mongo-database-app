@@ -2,11 +2,14 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import planetRoutes from "./routes/planetRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
+
 
 const app = express();
 //middleware
 app.use(express.json());
 app.use("/api/planets", planetRoutes);
+app.use("/api/users", userRoutes);
 
 const port = 6754;
 dotenv.config();

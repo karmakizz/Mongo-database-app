@@ -1,26 +1,30 @@
-# 🌍 Planet API (MongoDB + Express)
+# 🌍 Space Exploration API
 
 ## 📌 Overview
-A REST API that allows users to store and manage information about planets in the solar system.
+A REST API to store and manage planets, users, and space missions.
 
 ## 🛠 Setup Instructions
+1. Clone the repo: `git clone https://github.com/yourusername/planet-api.git`
+2. Install dependencies: `npm install`
+3. Add your `.env` file
+4. Start the server: `npm run dev`
 
-### 1️⃣ Clone the Repository
-```sh
-git clone https://github.com/yourusername/planet-api.git
-cd planet-api
-npm install
-3️⃣ Create a .env File
-Copy .env.example to .env
-Update MONGO_URI with your MongoDB connection
-4️⃣ Start the Server
-sh
-Copy
-Edit
-npm run dev
-🌟 API Endpoints
-Method	Route	Description
-GET	/api/planets	Get all planets
-POST	/api/planets	Add a planet
-PATCH	/api/planets/:id	Update a planet
-DELETE	/api/planets/:id	Remove a planet
+## 🌟 API Endpoints
+
+### Planets
+| Method | Route | Description |
+|--------|------|-------------|
+| GET    | `/api/planets` | Get all planets |
+| POST   | `/api/planets` | Add a new planet |
+
+### Users
+| Method | Route | Description |
+|--------|------|-------------|
+| GET    | `/api/users` | Get all users |
+| POST   | `/api/users` | Add a new user |
+
+### Missions
+| Method | Route | Description |
+|--------|------|-------------|
+| GET    | `/api/missions` | Get all missions |
+| POST   | `/api/missions` | Add a new mission |

@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 
 const planetSchema = new mongoose.Schema({
-  name: { type: String },
-  orderFromSun: { type: Number },
+  name: { type: String,required: true},
+  orderFromSun: { type: Number,required: true },
   hasRings: { type: Boolean },
   mainAtmosphere: { type: [String], default: [] },
   surfaceTemperatureC: {
@@ -11,6 +11,7 @@ const planetSchema = new mongoose.Schema({
     mean: { type: Number },
   }
 });
+planetSchema.index({ name: 1 }); // Indexes the name field for faster queries
 
 const Planet = mongoose.model("Planet", planetSchema);
 export default Planet;
