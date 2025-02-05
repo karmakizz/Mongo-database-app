@@ -38,7 +38,19 @@ router.patch("/:id", async (req, res) => {
     res.status(400).json({ message: error.message });
   }
 });
-//DELETE a planet
+
+// DELETE a planet
+router.delete("/:id", async (req, res) => {
+  try {
+    const deletedPlanet = await Planet.findByIdAndDelete(req.params.id);
+    if (!deletedPlanet) {
+      return res.status(404).json({ message: "Planet not found" });
+    }
+    res.json({ message: "Planet deleted" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
 
 
 export default router;
