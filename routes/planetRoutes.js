@@ -13,6 +13,8 @@ router.get("/", async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
+
+
 // POST a new planet
 router.post("/", async (req, res) => {
   const planet = new Planet(req.body);
@@ -23,5 +25,20 @@ router.post("/", async (req, res) => {
     res.status(400).json({ message: error.message });
   }
 });
+
+// PATCH update a planet
+router.patch("/:id", async (req, res) => {
+  try {
+    const updatedPlanet = await Planet.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    if (!updatedPlanet) {
+      return res.status(404).json({ message: "Planet not found" });
+    }
+    res.json(updatedPlanet);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
+//DELETE a planet
+
 
 export default router;
